@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import axios from 'axios'
+
 import { Switch, Route } from 'react-router'
-import AppURL from '../api/AppURL'
 
 import AboutPage from '../pages/AboutPage'
 import CartPage from '../pages/CartPage'
