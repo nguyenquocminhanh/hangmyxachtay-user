@@ -90,8 +90,8 @@ export class OrderList extends Component {
             cogoToast.error('Plase Select Your Rating', {position: 'top-right'});
         } else if (comments.length === 0) {
             cogoToast.error('Plase Enter Your Comments', {position: 'top-right'});
-        } else if (comments.length > 50) {
-            cogoToast.error("Comments can't be more than 50 characters", {position: 'top-right'});
+        } else if (comments.length > 80) {
+            cogoToast.error("Comments can't be more than 80 characters", {position: 'top-right'});
         } else {
             let myFormData = new FormData();
             myFormData.append('product_name', productName);
