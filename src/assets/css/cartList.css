@@ -1,0 +1,17 @@
+.cart-product-img {
+    width: 100px;
+    height: 110px;
+    margin-left: 50px;
+}
+
+@media (max-width: 767px) {
+    .cart-product-img {
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 300px) {
+    .cart-product-img {
+        margin-left: 0px;
+    }
+}

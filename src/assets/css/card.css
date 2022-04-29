@@ -1,0 +1,139 @@
+.card {
+    width: 100% !important;
+    text-decoration: none;
+    border: none !important;
+    border-radius: 0% !important;
+    box-shadow: 0 0 4px 0 rgba(57, 78, 234, 0.1)
+}
+.card:hover {
+    border-radius: 0% !important;
+    text-decoration: none;
+    box-shadow: 0 0 12px 0 rgba(57, 78, 234, 0.1);
+}
+
+.bar-img {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.image-box {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    width: 100% !important;
+    padding: 10px
+}
+.image-box img {
+    width: 150px !important;
+    transition: all 0.3s;
+    display: block;
+    height: 250px !important;
+    transform: scale(1);
+}
+.image-box:hover img {
+    transform: scale(1.05);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .section-title h2 {
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+}
+
+.section-title h2:before {
+    position: absolute;
+    top: 17px;
+    left: -100px;
+    width: 80px;
+    height: 2px;
+    content: "";
+    background-color: #000;
+}
+
+.section-title h2:after {
+    position: absolute;
+    top: 17px;
+    right: -100px;
+    width: 80px;
+    height: 2px;
+    content: "";
+    background-color: #000;
+} 
+
+.section-title h3 {
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+}
+
+.card-body {
+    padding: 1rem 0.5rem 0.5rem 0.5rem
+}
+
+@media (max-width: 767px) {
+    .image-box img {
+        height: 200px !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .image-box img {
+        height: 200px !important;
+    }
+
+    .section-title h2 {
+        font-size: 20px;
+        font-weight: 600;
+        position: relative;
+        display: inline-block;
+        margin: 0;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .section-title h2:before {
+        position: absolute;
+        top: 10px;
+        left: -25px;
+        width: 20px;
+        height: 2px;
+        content: "";
+        background-color: #000;
+    }
+    
+    .section-title h2:after {
+        position: absolute;
+        top: 10px;
+        right: -25px;
+        width: 20px;
+        height: 2px;
+        content: "";
+        background-color: #000;
+    } 
+
+    .HomeButton {
+        display: none;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    h6 {
+        font-size: 15px;
+    }
+}

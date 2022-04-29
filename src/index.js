@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// css files
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../src/assets/css/custom.css';
+import '../src/assets/css/fontawesome.css';
+import '../src/assets/css/animate.min.css';
+import '../src/assets/css/placeholder-loading.min.css';
+import axios from 'axios';
+
+// redux
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
+// in order to get user data
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

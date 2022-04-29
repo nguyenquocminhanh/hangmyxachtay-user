@@ -1,0 +1,16 @@
+export const GET_USER_DATA_START = 'GET_USER_DATA_START';
+export const GET_USER_DATA_SUCCESS = 'GET_USER_DATA_SUCCESS';
+export const GET_USER_DATA_FAIL = 'GET_USER_DATA_FAIL';
+
+export const GET_FAV_DATA_SUCCESS = 'GET_FAV_DATA_SUCCESS';
+export const GET_CART_DATA_SUCCESS = 'GET_CART_DATA_SUCCESS';
+
+export const SET_USER_DATA = 'SET_USER_DATA';
+export const SET_FAV_DATA = 'SET_FAV_DATA';
+export const SET_CART_DATA = 'SET_CART_DATA';
+
+export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
+export const CLEAR_FAV_DATA = 'CLEAR_FAV_DATA';
+export const CLEAR_CART_DATA = 'CLEAR_CART_DATA';
+
+// export const USER_LOGIN = 'USER_LOGIN';
