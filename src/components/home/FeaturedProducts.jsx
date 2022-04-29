@@ -102,7 +102,7 @@ class FeaturedProducts extends Component {
               <img className='center' src={featuredProduct['image']}/>
               <Card.Body>
                 <p className='product-name-on-card'>{featuredProduct['title']}</p>
-                {featuredProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${featuredProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${featuredProduct['price']}</strike>&nbsp; ${featuredProduct['special_price']}</p>}
+                {featuredProduct['special_price'] == null ? <p className='text-secondary'>Price: ${featuredProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${featuredProduct['price']}</strike>&nbsp; ${featuredProduct['special_price']}</p>}
               </Card.Body>
             </Card>
           </Link>
