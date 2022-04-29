@@ -46,7 +46,7 @@ class Category extends Component {
               <img className='center' src={categoryProduct['image']}/>
               {/* Sale Off */}
               <div class="">
-                 { categoryProduct['special_price'] == 'na' ? 
+                 { categoryProduct['special_price'] == null ? 
                  null : 
                  <div class="position-absolute top-0 end-0 m-2 product-discount"><span className="badge alert-success">-{((100 * (categoryProduct['price'] - categoryProduct['special_price'])) / categoryProduct['price']).toFixed(0)}%</span></div>}
               </div>
@@ -54,13 +54,13 @@ class Category extends Component {
                 <p className='product-name-on-card'>{categoryProduct['title']}</p>
                 <div class="clearfix">
                   <div className='position-absolute top-0 start-0 m-2 product-discount'>
-                    {categoryProduct['special_price'] == 'na' ? 
+                    {categoryProduct['special_price'] == null ? 
                     <span className="badge alert-warning"><strong>{categoryProduct['remark']}</strong></span> :
                     <span className="badge alert-warning"><strong>SALE</strong></span>}
                   </div>
        
                 {/* Price */}
-                {categoryProduct['special_price'] == 'na' ? <p className='product-price-on-card'>Price: ${categoryProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${categoryProduct['price']}</strike>&nbsp; ${categoryProduct['special_price']}</p>}
+                {categoryProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${categoryProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${categoryProduct['price']}</strike>&nbsp; ${categoryProduct['special_price']}</p>}
                     
                 </div>
               </Card.Body>

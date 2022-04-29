@@ -406,7 +406,7 @@ class  ProductDetails extends Component {
                         {/* <img id="previewImg" className="w-100 Bigimage" src={image} /> */}
                         
                         <div className='position-relative'>
-                            { special_price == 'na' ? null : <span className="badge alert-success fs-6">-{((100 * (price - special_price)) / price).toFixed(0)}%</span> }
+                            { special_price == null ? null : <span className="badge alert-success fs-6">-{((100 * (price - special_price)) / price).toFixed(0)}%</span> }
                            
                             { soldout == 1 ? 
                             <span className="badge alert-secondary fs-6 position-absolute end-0" style={{zIndex: '1'}}>SOLD OUT</span> : 
@@ -437,7 +437,7 @@ class  ProductDetails extends Component {
                         <h6 className="section-sub-title">{short_description}</h6>
 
                         {/* Price */}                        
-                        {special_price != 'na'?
+                        {special_price != null?
                         <p className='Product-price-on-card mb-1'> 
                             Price: <strike className='text-secondary'>${price}</strike> ${special_price}
                         </p> : 

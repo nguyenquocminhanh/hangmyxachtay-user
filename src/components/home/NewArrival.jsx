@@ -74,7 +74,6 @@ class NewArrival extends Component {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
-            initialSlide: 2
           }
         },
         {
@@ -99,7 +98,7 @@ class NewArrival extends Component {
                 </div>
 
                 <div class="">
-                  { newProduct['special_price'] == 'na' ? 
+                  { newProduct['special_price'] == null ? 
                   null : 
                   <div class="position-absolute top-0 end-0 m-2 product-discount"><span class="badge alert-success">-{((100 * (newProduct['price'] - newProduct['special_price'])) / newProduct['price']).toFixed(0)}%</span></div>}
                 </div>
@@ -107,7 +106,7 @@ class NewArrival extends Component {
                 <img className='center' src={newProduct['image']}/>
                 <Card.Body>
                 <p className='product-name-on-card'>{newProduct['title']}</p>
-                {newProduct['special_price'] == 'na' ? <p className='product-price-on-card'>Price: ${newProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${newProduct['price']}</strike>&nbsp; ${newProduct['special_price']}</p>}
+                {newProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${newProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${newProduct['price']}</strike>&nbsp; ${newProduct['special_price']}</p>}
                 </Card.Body>
             </Card>
           </Link>

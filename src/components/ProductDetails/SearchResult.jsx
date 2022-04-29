@@ -18,7 +18,7 @@ class SearchResult extends Component {
               <img className='center' src={searchProduct['image']}/>
               <Card.Body>
                 <p className='product-name-on-card'>{searchProduct['title']}</p>
-                {searchProduct['special_price'] == 'na' ? <p className='product-price-on-card'>Price: ${searchProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${searchProduct['price']}</strike>&nbsp; ${searchProduct['special_price']}</p>}
+                {searchProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${searchProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${searchProduct['price']}</strike>&nbsp; ${searchProduct['special_price']}</p>}
               </Card.Body>
             </Card>
           </Link>

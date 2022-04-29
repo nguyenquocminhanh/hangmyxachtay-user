@@ -94,7 +94,7 @@ class FeaturedProducts extends Component {
               <div class="position-absolute top-0 start-0 m-2 product-discount"><span className="badge alert-warning">Best Seller</span></div>
 
               <div class="">
-                  { featuredProduct['special_price'] == 'na' ? 
+                  { featuredProduct['special_price'] == null ? 
                   null : 
                   <div class="position-absolute top-0 end-0 m-2 product-discount"><span class="badge alert-success">-{((100 * (featuredProduct['price'] - featuredProduct['special_price'])) / featuredProduct['price']).toFixed(0)}%</span></div>}
               </div>
@@ -102,7 +102,7 @@ class FeaturedProducts extends Component {
               <img className='center' src={featuredProduct['image']}/>
               <Card.Body>
                 <p className='product-name-on-card'>{featuredProduct['title']}</p>
-                {featuredProduct['special_price'] == 'na' ? <p className='product-price-on-card'>Price: ${featuredProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${featuredProduct['price']}</strike>&nbsp; ${featuredProduct['special_price']}</p>}
+                {featuredProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${featuredProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${featuredProduct['price']}</strike>&nbsp; ${featuredProduct['special_price']}</p>}
               </Card.Body>
             </Card>
           </Link>

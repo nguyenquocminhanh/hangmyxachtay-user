@@ -87,7 +87,7 @@ class SuggestedProduct extends Component {
               <img className='center' src={similarProduct['image']}/>
               <Card.Body>
                 <p className='product-name-on-card'>{similarProduct['title']}</p>
-                {similarProduct['special_price'] != 'na'?
+                {similarProduct['special_price'] != null?
                 <p className='Product-price-on-card'> 
                   Price: <strike className='text-secondary'>${similarProduct['price']}</strike> $${similarProduct['special_price']}
                 </p> : 

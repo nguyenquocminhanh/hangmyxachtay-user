@@ -95,7 +95,7 @@ class Collection extends Component {
               <div class="position-absolute top-0 start-0 m-2 product-discount"><span className="badge alert-warning">Sale</span></div>
               
               <div class="">
-                 { collectionProduct['special_price'] == 'na' ? 
+                 { collectionProduct['special_price'] == null ? 
                  null : 
                  <div class="position-absolute top-0 end-0 m-2 product-discount"><span class="badge alert-success">-{((100 * (collectionProduct['price'] - collectionProduct['special_price'])) / collectionProduct['price']).toFixed(0)}%</span></div>}
               </div>
@@ -104,7 +104,7 @@ class Collection extends Component {
              
               <Card.Body>
                 <p className='product-name-on-card'>{collectionProduct['title']}</p>
-                {collectionProduct['special_price'] == 'na' ? <p className='product-price-on-card'>Price: ${collectionProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${collectionProduct['price']}</strike>&nbsp; ${collectionProduct['special_price']}</p>}
+                {collectionProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${collectionProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${collectionProduct['price']}</strike>&nbsp; ${collectionProduct['special_price']}</p>}
               </Card.Body>
             </Card>
           </Link>

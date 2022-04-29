@@ -100,7 +100,7 @@ class Subcategory extends Component {
               <img className='center' src={subcategoryProduct['image']}/>
                {/* Sale Off */}
                <div class="">
-                 { subcategoryProduct['special_price'] == 'na' ? 
+                 { subcategoryProduct['special_price'] == null ? 
                  null : 
                  <div class="position-absolute top-0 end-0 m-2 product-discount"><span className="badge alert-success">-{((100 * (subcategoryProduct['price'] - subcategoryProduct['special_price'])) / subcategoryProduct['price']).toFixed(0)}%</span></div>}
               </div>
@@ -109,13 +109,13 @@ class Subcategory extends Component {
                 <p className='product-name-on-card'>{subcategoryProduct['title']}</p>
                 <div class="clearfix">
                   <div className='position-absolute top-0 start-0 m-2 product-discount'>
-                    {subcategoryProduct['special_price'] == 'na' ? 
+                    {subcategoryProduct['special_price'] == null ? 
                     <span className="badge alert-warning"><strong>{subcategoryProduct['remark']}</strong></span> :
                     <span className="badge alert-warning"><strong>SALE</strong></span>}
                   </div>
 
                   {/* Price */}
-                  {subcategoryProduct['special_price'] == 'na' ? <p className='product-price-on-card'>Price: ${subcategoryProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${subcategoryProduct['price']}</strike>&nbsp; ${subcategoryProduct['special_price']}</p>}
+                  {subcategoryProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${subcategoryProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${subcategoryProduct['price']}</strike>&nbsp; ${subcategoryProduct['special_price']}</p>}
 
               </div>
               </Card.Body>
