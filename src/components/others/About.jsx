@@ -54,7 +54,7 @@ class About extends Component {
 					<h4 className='section-title-login text-center'>About Us</h4>
 					<p>Welcome to H&agrave;ng Mỹ X&aacute;ch Tay, your number one source for all products. We&#39;re dedicated to giving you the very best of&nbsp; American Products, with a focus on dependability, customer service and uniqueness.</p>
 
-					<p>Founded in 2020 by Minh Nguyen and Cam Thuyen, H&agrave;ng Mỹ X&aacute;ch Tay has come a long way from its beginnings in a Boston, MA. When Minh Nguyen first started out, his passion for sharing American accessories for his fellow drove him to do intense research, quit her day job, and gave him the impetus to turn hard work and inspiration into to a booming online store. We now serve customers all over&nbsp; the US, Vietnam, and are thrilled to be a part of the quirky, eco-friendly, fair trade wing of the fashion industry.</p>
+					<p>Founded in 2020 by Minh Nguyen and Cam Thuyen, H&agrave;ng Mỹ X&aacute;ch Tay has come a long way from its beginnings in a Boston, MA. When Minh Nguyen first started out, his passion for sharing American accessories for his fellow drove him to do intense research, quit his day job, and gave him the impetus to turn hard work and inspiration into to a booming online store. We now serve customers all over&nbsp; the US, Vietnam, and are thrilled to be a part of the quirky, eco-friendly, fair trade wing of the fashion industry.</p>
 
 					<p>We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don&#39;t hesitate to contact us.</p>
 
