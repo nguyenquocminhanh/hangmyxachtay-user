@@ -1,5 +1,5 @@
 class AppURL {
-    static BaseURL = "http://192.241.134.90/api";
+    static BaseURL = "https://hangmyxachtayadmin.org/api";
 
     static VisitorDetails = this.BaseURL + '/getvisitor';
     static PostContact = this.BaseURL + '/postcontact';
