@@ -104,7 +104,7 @@ class Collection extends Component {
              
               <Card.Body>
                 <p className='product-name-on-card'>{collectionProduct['title']}</p>
-                {collectionProduct['special_price'] == null ? <p className='product-price-on-card'>Price: ${collectionProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${collectionProduct['price']}</strike>&nbsp; ${collectionProduct['special_price']}</p>}
+                {collectionProduct['special_price'] == null ? <p className='text-secondary'>Price: ${collectionProduct['price']}</p> : <p className='product-price-on-card'>Price: <strike className='text-secondary'>${collectionProduct['price']}</strike>&nbsp; ${collectionProduct['special_price']}</p>}
               </Card.Body>
             </Card>
           </Link>
