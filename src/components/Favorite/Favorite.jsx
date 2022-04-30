@@ -3,12 +3,9 @@ import React, { Component, Fragment } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import AppURL from '../../api/AppURL';
 import { Link } from 'react-router-dom';
-
+import cogoToast from 'cogo-toast';
 import { Redirect } from 'react-router-dom';
 import FavouriteLoading from '../placeholder/FavouriteLoading'
-
-import {ToastContainer, toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 
 class Favorite extends Component {
   constructor(props) {
@@ -24,10 +21,10 @@ class Favorite extends Component {
 
     axios.get(AppURL.RemoveFavourite(productCode, email)).then(response => {
         this.props.setFavData(response.data)
-          toast.success('Product Removed Successfully');
+        cogoToast.success('Product Removed Successfully', {position: 'top-right'});
         
         }).catch(error => {
-          toast.error('Your Request Is Not Done Yet! Try Again');
+            cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
         })
   }
 
@@ -43,7 +40,7 @@ class Favorite extends Component {
   render() {
     ///////////// PROTECT ROUTE //////////////////
     if (!localStorage.getItem('token')) {
-      toast.warning('You Should Log In First');
+      cogoToast.warn('You Should Log In First', {position: 'top-right'});
       return <Redirect to='login'/>
     }
 
@@ -82,19 +79,6 @@ class Favorite extends Component {
                 myView}
             </Row>
           </Container>
-
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-
           {this.pageRefresh()}
       </Fragment>
     )
