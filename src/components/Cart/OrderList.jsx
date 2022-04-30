@@ -2,10 +2,12 @@ import axios from 'axios';
 import React, { Component, Fragment } from 'react'
 import {Navbar,Container, Row, Col, Button, Card, Modal, DropdownButton, Dropdown} from 'react-bootstrap';
 import AppURL from '../../api/AppURL';
-import cogoToast from 'cogo-toast';
 import { Redirect } from 'react-router-dom';
 
 import Pagination from 'react-responsive-pagination';
+
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export class OrderList extends Component {
     constructor() {
@@ -85,13 +87,13 @@ export class OrderList extends Component {
 
         // validation
         if (name.length == 0) {
-            cogoToast.error('Plase Enter Your Name', {position: 'top-right'});
+            toast.error('Plase Enter Your Name');
         } else if (rating.length === 0) {
-            cogoToast.error('Plase Select Your Rating', {position: 'top-right'});
+            toast.error('Plase Select Your Rating');
         } else if (comments.length === 0) {
-            cogoToast.error('Plase Enter Your Comments', {position: 'top-right'});
+            toast.error('Plase Enter Your Comments');
         } else if (comments.length > 150) {
-            cogoToast.error("Comments can't be more than 150 characters", {position: 'top-right'});
+            toast.error("Comments can't be more than 150 characters");
         } else {
             let myFormData = new FormData();
             myFormData.append('product_name', productName);
@@ -105,16 +107,16 @@ export class OrderList extends Component {
 
             axios.post(AppURL.PostReview, myFormData).then(response => {
                 if(response.data === 1) {
-                    cogoToast.success('Review Submitted', {position: 'top-right'});
+                    toast.success('Review Submitted');
                     this.setState({
                         reviewModal: false,
                         pageRefreshStatus: true
                     })
                 } else {
-                    cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+                    toast.error('Your Request Is Not Done Yet! Try Again');
                 }
             }).catch(error => {
-                cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+                toast.error('Your Request Is Not Done Yet! Try Again');
             })
         }
     }
@@ -156,16 +158,16 @@ export class OrderList extends Component {
 
         axios.get(AppURL.CancelOrder(id)).then(response => {
             if(response.data === 1) {
-                cogoToast.success('Order Has Been Canceled', {position: 'top-right'});
+                toast.success('Order Has Been Canceled');
                 this.setState({
                     cancelButton: "Cancel Order",
                     pageRefreshStatus: true
                 })
             } else {
-                cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+                toast.error('Your Request Is Not Done Yet! Try Again');
             }
         }).catch(error => {
-            cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+            toast.error('Your Request Is Not Done Yet! Try Again');
             this.setState({
                 cancelButton: "Cancel Order"
             })
@@ -182,7 +184,7 @@ export class OrderList extends Component {
     render() {
         ///////////// PROTECT ROUTE //////////////////
         if (!localStorage.getItem('token')) {
-            cogoToast.warn('You Should Log In First', {position: 'top-right'});
+            toast.warning('You Should Log In First');
             return <Redirect to='login'/>
         }
         
@@ -333,6 +335,18 @@ export class OrderList extends Component {
 
                 </Modal.Footer>
             </Modal>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
 
             {this.pageRefresh()}
         </Fragment>

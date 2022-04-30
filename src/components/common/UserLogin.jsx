@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import AppURL from '../../api/AppURL';
 import { Redirect } from 'react-router-dom';
-import cogoToast from 'cogo-toast'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class UserLogin extends Component {
   constructor() {
@@ -64,7 +65,7 @@ class UserLogin extends Component {
         this.setState({
             loginButton: 'Login'
         })
-        cogoToast.error(err.response.data['message'], {position: 'top-right'})
+        toast.error(err.response.data['message'])
     })
   }
 
@@ -126,6 +127,19 @@ class UserLogin extends Component {
                   </Col>
               </Row>
           </Container>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
+
       </Fragment>
     )
   }

@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
-import cogoToast from 'cogo-toast'
+
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class Notification extends Component {
   constructor(props) {
@@ -40,7 +42,7 @@ class Notification extends Component {
   render() {
     ///////////// PROTECT ROUTE //////////////////
     if (!localStorage.getItem('token')) {
-      cogoToast.warn('You Should Log In First', {position: 'top-right'});
+      toast.warning('You Should Log In First');
       return <Redirect to='login'/>
     }
 
@@ -91,6 +93,18 @@ class Notification extends Component {
 
             </Modal.Footer>
         </Modal>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
 
       </Fragment>
     )

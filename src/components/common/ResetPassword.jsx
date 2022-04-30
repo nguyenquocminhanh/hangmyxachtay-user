@@ -8,7 +8,9 @@ import AppURL from '../../api/AppURL';
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { Redirect } from 'react-router-dom'
-import cogoToast from 'cogo-toast'
+
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class ResetPassword extends Component {
   constructor() {
@@ -43,7 +45,7 @@ class ResetPassword extends Component {
         this.setState({
             message: res.data['message'],
         })
-        cogoToast.success(this.state.message, {position: 'top-right'});
+        toast.success(this.state.message);
         document.getElementById("formreset").reset();
         this.setState({
           isReseted: true,
@@ -56,7 +58,7 @@ class ResetPassword extends Component {
         isReseted: false,
         resetButton: 'Reset Password'
       })
-      cogoToast.error(this.state.message, {position: 'top-right'});
+      toast.error(this.state.message);
     })
   }
   
@@ -111,6 +113,18 @@ class ResetPassword extends Component {
                   </Col>
               </Row>
           </Container>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
 
           <ToastContainer/>
       </Fragment>

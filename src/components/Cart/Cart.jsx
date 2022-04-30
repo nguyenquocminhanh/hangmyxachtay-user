@@ -2,9 +2,14 @@ import axios from 'axios';
 import React, { Component, Fragment } from 'react'
 import {Navbar,Container, Row, Col,Button,Card, Modal} from 'react-bootstrap';
 import AppURL from '../../api/AppURL';
-import cogoToast from 'cogo-toast';
+
 import { Redirect } from 'react-router-dom';
 import CartLoading from '../placeholder/CartLoading';
+
+
+import cogoToast from 'cogo-toast';
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class Cart extends Component {
   constructor() {
@@ -38,7 +43,7 @@ class Cart extends Component {
     this.props.cart.forEach(product => 
         axios.get(AppURL.CheckSoldOut(product['product_code'])).then(res =>{
             if (res.data === 1) {
-                cogoToast.loading(product['product_name'] + ' Was Sold Out', {position: 'top-right'}).then(() => {
+                cogoToast.loading(product['product_name'] + ' Was Sold Out').then(() => {
                     this.removeCartItem(product['id']);
                 });
             } 
@@ -51,10 +56,10 @@ class Cart extends Component {
     axios.get(AppURL.RemoveCartList(id, this.props.user['email'])).then(response => {
         // set cart on cart redux
         this.props.setCartData(response.data);
-        cogoToast.success('Product Item Removed', {position: 'top-right'});
+        toast.success('Product Item Removed');
 
     }).catch(error => {
-        cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+        toast.error('Your Request Is Not Done Yet! Try Again');
     })
   }
 
@@ -62,10 +67,10 @@ class Cart extends Component {
     axios.get(AppURL.CartItemPlus(id, quantity, price, this.props.user['email'])).then(response => {
         // set cart on cart redux
         this.props.setCartData(response.data);
-        cogoToast.success('Product Item Increased', {position: 'top-right'});
+        toast.success('Product Item Increased');
 
     }).catch(error => {
-        cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+        toast.error('Your Request Is Not Done Yet! Try Again');
     })
   }
 
@@ -74,10 +79,10 @@ class Cart extends Component {
         // set cart on cart redux
         this.props.setCartData(response.data);
 
-        cogoToast.success('Product Item Decreased', {position: 'top-right'});
+        toast.success('Product Item Decreased');
 
     }).catch(error => {
-        cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+        toast.error('Your Request Is Not Done Yet! Try Again');
     })
   }
 
@@ -91,13 +96,13 @@ class Cart extends Component {
 
     // validation
     if (city.length == 0) {
-        cogoToast.error('Plase Select City', {position: 'top-right'});
+        toast.error('Plase Select City');
     } else if (payment.length === 0) {
-        cogoToast.error('Plase Select Payment', {position: 'top-right'});
+        toast.error('Plase Select Payment');
     } else if (name.length === 0) {
-        cogoToast.error('Plase Enter Your Name', {position: 'top-right'});
+        toast.error('Plase Enter Your Name');
     } else if (address.length === 0) {
-        cogoToast.error('Plase Enter Your Address', {position: 'top-right'});
+        toast.error('Plase Enter Your Address');
     } else {            // validate OK
         // ko bao g đụng hàng
         let invoice = new Date().getTime();
@@ -113,7 +118,7 @@ class Cart extends Component {
         
         axios.post(AppURL.CartOrder, myFormData).then(response => {
             if(response.data === 1) {
-                cogoToast.success('Order Request Received', {position: 'top-right'});
+                toast.success('Order Request Received');
                 this.setState({
                     pageRedirectStatus: true
                 })
@@ -121,10 +126,10 @@ class Cart extends Component {
                 let emptyCart = [];
                 this.props.setCartData(emptyCart);
             } else {
-                cogoToast.info(response.data.message, {position: 'top-right'});
+                toast.info(response.data.message);
             }
         }).catch(error => {
-            cogoToast.info(error.response.data.message, {position: 'top-right'});
+            toast.info(error.response.data.message);
         })
     }
   }
@@ -155,7 +160,7 @@ class Cart extends Component {
   render() {
     ///////////// PROTECT ROUTE //////////////////
     if (!localStorage.getItem('token')) {
-        cogoToast.warn('You Should Log In First', {position: 'top-right'});
+        toast.warning('You Should Log In First');
         return <Redirect to='login'/>
     }
 
@@ -263,6 +268,17 @@ class Cart extends Component {
            </Row>
         </Container>
 
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
 
 
         {this.pageRefresh()}

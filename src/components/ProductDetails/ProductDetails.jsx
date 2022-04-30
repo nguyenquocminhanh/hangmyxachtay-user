@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import SuggestedProduct from './SuggestedProduct';
 
-import cogoToast from 'cogo-toast';
-
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import axios from 'axios';
@@ -13,6 +11,9 @@ import AppURL from '../../api/AppURL';
 import { Redirect } from 'react-router-dom';
 
 import parse from 'html-react-parser';
+
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class  ProductDetails extends Component {
   constructor() {
@@ -165,13 +166,13 @@ class  ProductDetails extends Component {
 
     // validation before add to cart
     if (isColor === "YES" && color.length === 0) {
-        cogoToast.error('Please Select Color', {position: 'top-right'});
+        toast.error('Please Select Color');
     } else if (isSize === "YES" && size.length === 0) {
-        cogoToast.error('Please Select Size', {position: 'top-right'});
+        toast.error('Please Select Size');
     } else if (quantity.length === 0) {
-        cogoToast.error('Please Select Quantity', {position: 'top-right'});
+        toast.error('Please Select Quantity');
     } else if (!localStorage.getItem('token')) {
-        cogoToast.warn('Please Login First', {position: 'top-right'});
+        toast.warn('Please Login First');
     } else {            // all checked PASSED!!
         this.setState({addToCartButton: "Adding..."});
         let formData = new FormData();
@@ -183,7 +184,7 @@ class  ProductDetails extends Component {
 
         axios.post(AppURL.AddToCart, formData).then(response => {
         
-            cogoToast.success('Product Added Successfully!!', {position: 'top-right'});
+            toast.success('Product Added Successfully!!');
             this.setState({
                 addToCartButton: "Add To Cart",
                 // pageRefreshStatus: true
@@ -192,7 +193,7 @@ class  ProductDetails extends Component {
             this.props.setCartData(response.data)
 
         }).catch(error => {
-            cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+            toast.error('Your Request Is Not Done Yet! Try Again');
             this.setState({
                 addToCartButton: "Add To Cart",
             })
@@ -207,14 +208,14 @@ class  ProductDetails extends Component {
     let productID = this.state.productID;
 
     if (!localStorage.getItem('token')) {
-        cogoToast.warn('Please Login First', {position: 'top-right'});
+        toast.warning('Please Login First');
     } else {
         this.setState({
             addToFavButton: 'Adding...'
         });
 
         axios.get(AppURL.AddToFavourite(productCode, email, productID)).then(response => {
-            cogoToast.success('Product Is Now In Favourite', {position: 'top-right'});
+            toast.success('Product Is Now In Favourite');
             this.setState({
                 addToFavButton: "Favourite",
                 // pageRefreshStatus: true
@@ -222,7 +223,7 @@ class  ProductDetails extends Component {
             // update favData in AppRoute
             this.props.setFavData(response.data);
         }).catch(error => {
-            cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+            toast.error('Your Request Is Not Done Yet! Try Again');
             this.setState({
                 addToFavButton: "Favourite",
             })
@@ -242,13 +243,13 @@ class  ProductDetails extends Component {
 
     // validation before add to cart
     if (isColor === "YES" && color.length === 0) {
-        cogoToast.error('Please Select Color', {position: 'top-right'});
+        toast.error('Please Select Color');
     } else if (isSize === "YES" && size.length === 0) {
-        cogoToast.error('Please Select Size', {position: 'top-right'});
+        toast.error('Please Select Size');
     } else if (quantity.length === 0) {
-        cogoToast.error('Please Select Quantity', {position: 'top-right'});
+        toast.error('Please Select Quantity');
     } else if (!localStorage.getItem('token')) {
-        cogoToast.warn('Please Login First', {position: 'top-right'});
+        toast.warning('Please Login First');
     } else {            // all checked PASSED!!
         this.setState({orderNowButton: "Adding..."});
         let formData = new FormData();
@@ -259,7 +260,7 @@ class  ProductDetails extends Component {
         formData.append("email", email);
 
         axios.post(AppURL.AddToCart, formData).then(response => {
-            cogoToast.success('Product Added Successfully!!', {position: 'top-right'});
+            toast.success('Product Added Successfully!!');
             // update cart in redux store
             this.props.setCartData(response.data)
             this.setState({
@@ -269,7 +270,7 @@ class  ProductDetails extends Component {
             })
             
         }).catch(error => {
-            cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
+            toast.error('Your Request Is Not Done Yet! Try Again');
             this.setState({
                 orderNowButton: "Order Now",
                 pageRedirectStatus: false
@@ -534,6 +535,18 @@ class  ProductDetails extends Component {
         </Container>
 
         <SuggestedProduct product_code={product_code} subcategory={subcategory}/>
+
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
 
         {this.pageRefresh()}
         {this.pageRedirect()}

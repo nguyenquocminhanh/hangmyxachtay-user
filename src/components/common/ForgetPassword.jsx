@@ -7,7 +7,7 @@ import AppURL from '../../api/AppURL'
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import cogoToast from 'cogo-toast';
+
 
 class ForgetPassword extends Component {
   constructor() {
@@ -36,20 +36,20 @@ class ForgetPassword extends Component {
         message: res.data['message'],
         forgetButton: 'Reset Password'
       })
-      cogoToast.success(this.state.message, {position: 'top-right'});
+      toast.success(this.state.message);
     }).catch(err => {
       this.setState({
         message: err.response.data['message'],
         forgetButton: 'Reset Password'
       })
-      cogoToast.error(this.state.message, {position: 'top-right'});
+      toast.error(this.state.message);
     })
   }
 
   render() {
     ///////////// PROTECT ROUTE //////////////////
     if (localStorage.getItem('token')) {
-      cogoToast.warn("You Can't Access This Page", {position: 'top-right'});
+      toast.warning("You Can't Access This Page");
       return <Redirect to='/profile'/>
     }
 
@@ -85,7 +85,17 @@ class ForgetPassword extends Component {
               </Row>
           </Container>
 
-          <ToastContainer/>
+          <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+          />
       </Fragment>
     )
   }

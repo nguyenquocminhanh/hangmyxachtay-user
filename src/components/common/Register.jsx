@@ -4,8 +4,11 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Login from '../../assets/images/login.png'
 import AppURL from '../../api/AppURL';
-import cogoToast from 'cogo-toast'
+
 import { Redirect } from 'react-router-dom'
+
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class Register extends Component {
   constructor() {
@@ -41,19 +44,19 @@ class Register extends Component {
             isRegisterd: true,
             registerButton: 'Sign Up'
         })
-        cogoToast.success(res.data['message'], {position: 'top-right'});
+        toast.success(res.data['message']);
     }).catch(err => {
         this.setState({
             registerButton: 'Sign Up'
         })
-        cogoToast.error(err.response.data['message'], {position: 'top-right'});
+        toast.error(err.response.data['message']);
     })
   }
 
   render() {
     ///////////// PROTECT ROUTE //////////////////
     if (localStorage.getItem('token')) {
-        cogoToast.warn("You Can't Access This Page", {position: 'top-right'});
+        toast.warning("You Can't Access This Page");
         return <Redirect to='/profile'/>
     }
 
@@ -119,6 +122,19 @@ class Register extends Component {
                   </Col>
               </Row>
           </Container>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
+        
       </Fragment>
     )
   }

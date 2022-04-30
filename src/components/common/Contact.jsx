@@ -125,7 +125,7 @@ class Contact extends Component {
                     </Col>
                 </Row>
             </Container>
-
+ 
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
