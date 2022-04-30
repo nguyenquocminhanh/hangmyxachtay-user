@@ -2,11 +2,9 @@ import React, { Component, Fragment } from 'react'
 import {Container, Row, Col, Card, ListGroup, ListGroupItem, Modal, Button, Form} from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import Portrait from '../../assets/images/no_image.jpg'
+import cogoToast from 'cogo-toast';
 import axios from 'axios'
 import AppURL from '../../api/AppURL';
-
-import {ToastContainer, toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -80,9 +78,9 @@ class Profile extends Component {
 
      // validation
     if (name.length == 0) {
-      toast.error('Plase Enter Your Name');
+    cogoToast.error('Plase Enter Your Name', {position: 'top-right'});
     } else if (email.length === 0) {
-      toast.error('Plase Enter Your Email');
+        cogoToast.error('Plase Enter Your Email', {position: 'top-right'});
     } else {            // validate OK
 
     let myFormData = new FormData();
@@ -113,7 +111,7 @@ class Profile extends Component {
         this.setState({
           updateProfileButton: 'Update',
         })
-        toast.error('Your Request Is Not Done Yet! Try Again');
+        cogoToast.error('Your Request Is Not Done Yet! Try Again', {position: 'top-right'});
     })}
   }
 
@@ -126,13 +124,13 @@ class Profile extends Component {
 
      // validation
      if (oldPassword.length === 0) {
-      toast.error('Please Enter Your Current Password');
+        cogoToast.error('Please Enter Your Current Password', {position: 'top-right'});
      } else if (newPassword.length < 6) {
-      toast.error('Password Must Be At Least 6 Characters');
+        cogoToast.error('Password Must Be At Least 6 Characters', {position: 'top-right'});
     } else if (confirmPassword !== newPassword) {
-      toast.error('Confirm Password Does Not Match');
+        cogoToast.error('Confirm Password Does Not Match', {position: 'top-right'});
     } else if (oldPassword === newPassword) {
-      toast.error('You Cannot Use The Old Password');
+        cogoToast.error('You Cannot Use The Old Password', {position: 'top-right'});
     } else {            // validate OK
 
     let myFormData = new FormData();
@@ -151,7 +149,7 @@ class Profile extends Component {
         message: response.data['message'],
         changePasswordButton: 'Change'
       })
-      toast.success(this.state.message);
+      cogoToast.success(this.state.message, {position: 'top-right'});
 
       this.setState({
         isReseted: true
@@ -162,7 +160,7 @@ class Profile extends Component {
         isReseted: false,
         changePasswordButton: 'Change'
       })
-      toast.error(this.state.message);
+      cogoToast.error(this.state.message, {position: 'top-right'});
     })}
   }
 
@@ -213,7 +211,7 @@ class Profile extends Component {
     let profileImageForm = document.getElementById('profileImageForm');
 
     if (this.state.image === null) {
-      toast.error('No Image Found');
+      cogoToast.error('No Image Found', {position: 'top-right'});
     } else {
       let myFormData = new FormData();
 
@@ -223,11 +221,11 @@ class Profile extends Component {
       axios.post(AppURL.UserImageUpload, myFormData)
         .then(response => {
           profileImageForm.reset();
-          toast.success('Image Upload Successfully!!');
+          cogoToast.success('Image Upload Successfully!!', {position: 'top-right'});
         }) 
         .catch(error => {
           console.log(error);
-          toast.error('Your Request Was Not Done Yet!');
+          cogoToast.error('Your Request Was Not Done Yet!', {position: 'top-right'});
         })
     }
   }
@@ -245,7 +243,7 @@ class Profile extends Component {
   render() {
     ///////////// PROTECT ROUTE //////////////////
     if (!localStorage.getItem('token')) {
-      toast.warning('You Should Log In First');
+      cogoToast.warn('You Should Log In First', {position: 'top-right'});
       return <Redirect to='login'/>
     }
 
@@ -412,18 +410,6 @@ class Profile extends Component {
 
           </Modal.Footer>
         </Modal>
-
-        <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-        />
 
         {this.pageRefresh()}
 
