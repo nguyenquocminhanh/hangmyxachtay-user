@@ -533,7 +533,7 @@ class  ProductDetails extends Component {
             </Row>
         </Container>
 
-        <SuggestedProduct subcategory={subcategory}/>
+        <SuggestedProduct product_code={product_code} subcategory={subcategory}/>
 
         {this.pageRefresh()}
         {this.pageRedirect()}

@@ -29,8 +29,9 @@ class SuggestedProduct extends Component {
 
   componentDidMount = () => {
     let subcategory = this.props.subcategory;
+    let product_code = this.props.product_code;
 
-    axios.get(AppURL.SimilarProductList(subcategory)).then(response => {
+    axios.get(AppURL.SimilarProductList(subcategory, product_code)).then(response => {
       this.setState({
         productData: response.data
       })

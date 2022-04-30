@@ -21,8 +21,8 @@ class AppURL {
         return this.BaseURL + '/search/' + searchKey;
     } 
 
-    static SimilarProductList(subcategory) {
-        return this.BaseURL + '/similar/' + subcategory;
+    static SimilarProductList(subcategory, code) {
+        return this.BaseURL + '/similar/' + subcategory + '/' + code;
     } 
 
 
