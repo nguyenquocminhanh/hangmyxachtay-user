@@ -125,8 +125,6 @@ class ResetPassword extends Component {
             draggable
             pauseOnHover
         />
-
-          <ToastContainer/>
       </Fragment>
     )
   }
