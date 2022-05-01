@@ -160,6 +160,7 @@ class  ProductDetails extends Component {
     let size = this.state.size;
     let quantity = this.state.quantity;
     let productCode = this.state.productCode;
+    let product_id = this.state.productID;
     
     let email = this.props.user['email'];
 
@@ -180,6 +181,7 @@ class  ProductDetails extends Component {
         formData.append("quantity", quantity);
         formData.append("product_code", productCode);
         formData.append("email", email);
+        formData.append("product_id", product_id);
 
         axios.post(AppURL.AddToCart, formData).then(response => {
         
@@ -237,6 +239,7 @@ class  ProductDetails extends Component {
     let size = this.state.size;
     let quantity = this.state.quantity;
     let productCode = this.state.productCode;
+    let product_id = this.state.productID;
     
     let email = this.props.user['email'];
 
@@ -257,6 +260,7 @@ class  ProductDetails extends Component {
         formData.append("quantity", quantity);
         formData.append("product_code", productCode);
         formData.append("email", email);
+        formData.append("product_id", product_id);
 
         axios.post(AppURL.AddToCart, formData).then(response => {
             cogoToast.success('Product Added Successfully!!', {position: 'top-right'});

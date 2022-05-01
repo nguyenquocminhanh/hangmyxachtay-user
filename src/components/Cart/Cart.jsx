@@ -5,6 +5,7 @@ import AppURL from '../../api/AppURL';
 import cogoToast from 'cogo-toast';
 import { Redirect } from 'react-router-dom';
 import CartLoading from '../placeholder/CartLoading';
+import {Link} from 'react-router-dom';
 
 class Cart extends Component {
   constructor() {
@@ -171,7 +172,9 @@ class Cart extends Component {
             <Card.Body>
                 <Row>
                     <Col md={6} lg={3} sm={6} xs={6}>
-                        <img className="cart-product-img" src={cartItem['image']}/>
+                        <Link to={"/productdetails/" + cartItem['product_id']}>            
+                           <img className="cart-product-img" src={cartItem['image']}/>
+                        </Link>
                     </Col>
 
                     <Col md={6} lg={6} sm={6} xs={6}>
