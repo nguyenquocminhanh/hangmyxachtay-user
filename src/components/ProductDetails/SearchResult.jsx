@@ -12,7 +12,7 @@ class SearchResult extends Component {
     const searchKey = this.props.searchKey;
     const myView = searchProductList.map((searchProduct, i) => {
       return (
-        <Col key={i.toString()} className='p-1'key={1} xl={3} lg={4} md={4} sm={6} xs={6}>
+        <Col key={i.toString()} className='p-1' xl={3} lg={4} md={4} sm={6} xs={6}>
           <Link className='text-link' to={"/productdetails/" + searchProduct['id']}>
             <Card className='image-box card'>
               <img className='center' src={searchProduct['image']}/>

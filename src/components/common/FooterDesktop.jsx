@@ -13,7 +13,7 @@ class FooterDesktop extends Component {
     this.state = {
         address: "",
         android_app_link: "",
-        ios_app_link: "",
+        ios_app_link: "", 
         facebook_link: "",
         twitter_link: "",
         instagram_link: "",
