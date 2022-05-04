@@ -52,7 +52,7 @@ class FooterMobile extends Component {
         <div className='footerback shadow-sm m-0 mt-5 pt-3'>
           <Container className='text-center' fluid={"true"}>
             <Row className='px-0 py-3' >
-              <Col className='p-2' lg={3} md={3} sm={6} xs={12}>
+              <Col className='p-2' lg={3} md={3} sm={12} xs={12}>
 
                 <div className={this.state.loaderDiv}>      {/* Placeholder loading */}
                   <div class="ph-col">
